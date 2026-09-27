@@ -12,6 +12,20 @@
         <button id="cart_button">Корзина (0)</button>
     </header>
     <main>
+        <section id="cart_section" class="hidden">
+            <h2>Корзина</h2>
+            <div id="cart_items_container"></div>
+            <p><strong>Итого: <span id="cart_total">0</span> руб.</strong></p>
+
+            <h3>Оформление заказа</h3>
+            <form id="order_form">
+                <input type="text" placeholder="Имя" required>
+                <input type="text" placeholder="Фамилия" required>
+                <input type="text" placeholder="Адрес доставки" required>
+                <input type="tel" placeholder="Телефон" required>
+                <button type="submit">Создать заказ</button>
+            </form>
+        </section>
         <section>
             <h2>Каталог</h2>
             <div id="catalog_container">

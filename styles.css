@@ -62,3 +62,34 @@ header {
     width: 100%;
     margin-top: 6px;
 }
+
+.hidden {
+    display: none !important;
+}
+
+#cart_section {
+    background-color: #ffffff;
+    border: 2px solid #e05252;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+#order_form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+#order_form input {
+    padding: 8px;
+    border: 1px solid #e05252;
+}
+
+#order_form button {
+    background-color: #e05252;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
