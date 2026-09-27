@@ -1,3 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -92,4 +102,16 @@ header {
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    #order_form {
+        max-width: 100%;
+    }
 }
