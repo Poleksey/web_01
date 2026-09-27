@@ -5,6 +5,8 @@ const products = [
     { id: 4, name: "Отбеливатель", price: 49.99, image: "images/отбеливатель1.jpg" }
 ];
 
+
+// сетка товаров
 function renderCatalog() {
     const catalog = document.getElementById('catalog_container');
     if (!catalog) return;
@@ -19,11 +21,82 @@ function renderCatalog() {
     `).join('');
 }
 
-function addToCart(id) {
-    console.log('ЗАГЛУШКА \ нажание на добавление товара в коризну', id);
+// корзина
+let cart = [];
+const savedCart = localStorage.getItem('cart');
+if (savedCart !== null) {
+    cart = JSON.parse(savedCart);
 }
 
-renderCatalog();
+
+function renderCart() {
+    const container = document.getElementById('cart_items_container');
+    const button = document.getElementById('cart_button');
+    const total = document.getElementById('cart_total');
+
+    if (!container || !button || !total) return;
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p>Корзина пуста</p>';
+        button.textContent = 'Корзина (0)';
+        total.textContent = '0';
+        return;
+    }
+
+    let totalCount = 0;
+    let totalPrice = 0;
+    let itemsHtml = '';
+
+    for (const item of cart) {
+        totalCount += item.quantity;
+        totalPrice += item.price * item.quantity;
+        itemsHtml += `
+            <div class="cart_item">
+                <span>${item.name} (${item.quantity} шт.)</span> — 
+                <strong>${(item.price * item.quantity).toFixed(2)} руб.</strong>
+                <button onclick="removeFromCart(${item.id})">Удалить</button>
+            </div>
+        `;
+    }
+    container.innerHTML = itemsHtml;
+    button.textContent = `Корзина (${totalCount})`;
+    total.textContent = totalPrice.toFixed(2);
+}
+
+function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+
+    const existingItem = cart.find(item => item.id === id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+}
+
+function removeFromCart(id) {
+    const index = cart.findIndex(item => item.id === id);
+    if (index !== -1) {
+        if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+        } else {
+            cart.splice(index, 1);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    }
+}
 
 
 const cartButton = document.getElementById('cart_button');
@@ -34,3 +107,7 @@ if (cartButton && cartSection) {
         cartSection.classList.toggle('hidden');
     });
 }
+
+
+renderCatalog();
+renderCart();
