@@ -24,3 +24,13 @@ function addToCart(id) {
 }
 
 renderCatalog();
+
+
+const cartButton = document.getElementById('cart_button');
+const cartSection = document.getElementById('cart_section');
+
+if (cartButton && cartSection) {
+    cartButton.addEventListener('click', () => {
+        cartSection.classList.toggle('hidden');
+    });
+}
