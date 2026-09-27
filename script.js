@@ -52,9 +52,11 @@ function renderCart() {
         totalPrice += item.price * item.quantity;
         itemsHtml += `
             <div class="cart_item">
-                <span>${item.name} (${item.quantity} шт.)</span> — 
+                <span>${item.name}</span> — 
+                <button onclick="removeFromCart(${item.id})">-</button>
+                <span>${item.quantity} шт.</span>
+                <button onclick="addToCart(${item.id})">+</button> — 
                 <strong>${(item.price * item.quantity).toFixed(2)} руб.</strong>
-                <button onclick="removeFromCart(${item.id})">Удалить</button>
             </div>
         `;
     }
@@ -108,6 +110,26 @@ if (cartButton && cartSection) {
     });
 }
 
+// Обработка формы заказа
+const orderForm = document.getElementById('order_form');
+
+if (orderForm) {
+    orderForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (cart.length === 0) {
+            alert('ВАША КОРЗИНА ПУСТА.');
+            return;
+        }
+
+        alert('Заказ создан!');
+
+        cart = [];
+        localStorage.removeItem('cart');
+        orderForm.reset();
+        renderCart();
+    });
+}
 
 renderCatalog();
 renderCart();
