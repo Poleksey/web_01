@@ -1,8 +1,8 @@
 const products = [
-    { id: 1, name: "Стиральный порошок 5кг", price: 450, image: "images/порошок1.jpg" },
-    { id: 2, name: "Стиральный порошок 1 кг", price: 100, image: "images/порошок2.jpg" },
-    { id: 3, name: "Кондиционер", price: 150, image: "images/гель1.jpg" },
-    { id: 4, name: "Отбеливатель", price: 49.99, image: "images/отбеливатель1.jpg" }
+    { id: 1, name: "Стиральный порошок 5кг", price: 450, image: "images/порошок1.png" },
+    { id: 2, name: "Стиральный порошок 1 кг", price: 100, image: "images/порошок2.png" },
+    { id: 3, name: "Кондиционер", price: 150, image: "images/гель1.png" },
+    { id: 4, name: "Отбеливатель", price: 49.99, image: "images/отбеливатель1.png" }
 ];
 
 
