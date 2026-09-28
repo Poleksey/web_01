@@ -91,7 +91,19 @@ header {
     max-width: 400px;
 }
 
+#order_form p {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#order_form label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 #order_form input {
+    width: 100%;
     padding: 8px;
     border: 1px solid #e05252;
 }

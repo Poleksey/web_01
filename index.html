@@ -20,10 +20,22 @@
 
             <h3>Оформление заказа</h3>
             <form id="order_form">
-                <input type="text" placeholder="Имя" required>
-                <input type="text" placeholder="Фамилия" required>
-                <input type="text" placeholder="Адрес доставки" required>
-                <input type="tel" placeholder="Телефон" required>
+                <p>
+                    <label for="first_name">Имя:</label>
+                    <input type="text" id="first_name" name="user_first_name" required>
+                </p>
+                <p>
+                    <label for="last_name">Фамилия:</label>
+                    <input type="text" id="last_name" name="user_last_name" required>
+                </p>
+                <p>
+                    <label for="address">Адрес доставки:</label>
+                    <input type="text" id="address" name="user_address" required>
+                </p>
+                <p>
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="user_phone" required>
+                </p>
                 <button type="submit">Создать заказ</button>
             </form>
         </section>
